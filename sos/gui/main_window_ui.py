@@ -17,6 +17,8 @@ from PySide2.QtWidgets import *
 
 from sos.gui.login_screen import LoginScreen
 from sos.gui.signup_screen import SignUpScreen
+from sos.gui.menu_screen import MenuScreen
+from sos.gui.account_screen import AccountScreen
 
 
 class Ui_MainWindow(object):
@@ -33,9 +35,15 @@ class Ui_MainWindow(object):
         self.loginScreen = LoginScreen()
         self.loginScreen.setObjectName(u"loginScreen")
         self.stackedWidget.addWidget(self.loginScreen)
+        self.menuScreen = MenuScreen()
+        self.menuScreen.setObjectName(u"menuScreen")
+        self.stackedWidget.addWidget(self.menuScreen)
         self.signupScreen = SignUpScreen()
         self.signupScreen.setObjectName(u"signupScreen")
         self.stackedWidget.addWidget(self.signupScreen)
+        self.accountScreen = AccountScreen()
+        self.accountScreen.setObjectName(u"accountScreen")
+        self.stackedWidget.addWidget(self.accountScreen)
 
         self.verticalLayout.addWidget(self.stackedWidget)
 
@@ -53,6 +61,7 @@ class Ui_MainWindow(object):
         self.serverIP1SpinBox.setAlignment(Qt.AlignCenter)
         self.serverIP1SpinBox.setButtonSymbols(QAbstractSpinBox.NoButtons)
         self.serverIP1SpinBox.setMaximum(999)
+        self.serverIP1SpinBox.setValue(127)
 
         self.horizontalLayout_2.addWidget(self.serverIP1SpinBox)
 
@@ -98,6 +107,7 @@ class Ui_MainWindow(object):
         self.serverIP4SpinBox.setAlignment(Qt.AlignCenter)
         self.serverIP4SpinBox.setButtonSymbols(QAbstractSpinBox.NoButtons)
         self.serverIP4SpinBox.setMaximum(999)
+        self.serverIP4SpinBox.setValue(1)
 
         self.horizontalLayout_2.addWidget(self.serverIP4SpinBox)
 

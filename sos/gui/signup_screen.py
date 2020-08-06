@@ -14,11 +14,11 @@ class SignUpScreen(QWidget, Ui_SignUpScreen):
 
     def handle_back(self):
         self.main_window.navigate_to_login_screen()
-        self.refresh_form()
 
     def refresh_form(self):
         self.usernameLineEdit.setText("")
         self.passwordLineEdit.setText("")
+        self.repeatPasswordLineEdit.setText("")
         self.firstnameLineEdit.setText("")
         self.lastnameLineEdit.setText("")
 
@@ -38,7 +38,7 @@ class SignUpScreen(QWidget, Ui_SignUpScreen):
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
                 sock.connect(self.main_window.get_server_address())
                 request = Packet()
-                request["commad"] = "signup_request"
+                request["command"] = "signup_request"
                 request["data"] = {
                     "username" : username,
                     "password" : password,

@@ -14,7 +14,6 @@ class LoginScreen(QWidget, Ui_LoginScreen):
 
     def handle_signup(self):
         self.main_window.navigate_to_signup_screen()
-        self.refresh_form()
 
     def refresh_form(self):
         self.usernameLineEdit.setText("")
@@ -30,7 +29,7 @@ class LoginScreen(QWidget, Ui_LoginScreen):
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
                 sock.connect(self.main_window.get_server_address())
                 request = Packet()
-                request["commad"] = "login_request"
+                request["command"] = "login_request"
                 request["data"] = {
                     "username" : username,
                     "password" : password
