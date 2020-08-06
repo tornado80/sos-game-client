@@ -18,7 +18,7 @@
     <item>
      <widget class="QStackedWidget" name="stackedWidget">
       <widget class="LoginScreen" name="loginScreen"/>
-      <widget class="QWidget" name="page_2"/>
+      <widget class="SignUpScreen" name="signupScreen"/>
      </widget>
     </item>
     <item>
@@ -163,6 +163,12 @@
    <class>LoginScreen</class>
    <extends>QWidget</extends>
    <header>sos.gui.login_screen</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>SignUpScreen</class>
+   <extends>QWidget</extends>
+   <header>sos.gui.signup_screen</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

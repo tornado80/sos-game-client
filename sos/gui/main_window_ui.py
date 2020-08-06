@@ -16,6 +16,7 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
 from PySide2.QtWidgets import *
 
 from sos.gui.login_screen import LoginScreen
+from sos.gui.signup_screen import SignUpScreen
 
 
 class Ui_MainWindow(object):
@@ -32,9 +33,9 @@ class Ui_MainWindow(object):
         self.loginScreen = LoginScreen()
         self.loginScreen.setObjectName(u"loginScreen")
         self.stackedWidget.addWidget(self.loginScreen)
-        self.page_2 = QWidget()
-        self.page_2.setObjectName(u"page_2")
-        self.stackedWidget.addWidget(self.page_2)
+        self.signupScreen = SignUpScreen()
+        self.signupScreen.setObjectName(u"signupScreen")
+        self.stackedWidget.addWidget(self.signupScreen)
 
         self.verticalLayout.addWidget(self.stackedWidget)
 
