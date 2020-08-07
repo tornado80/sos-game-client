@@ -10,7 +10,10 @@ class MenuScreen(QWidget, Ui_MenuScreen):
         self.setupUi(self)
         self.signoutButton.clicked.connect(self.handle_signout)
         self.myAccountButton.clicked.connect(self.handle_my_account)
-        
+    
+    def handle_my_account(self):
+        self.main_window.navigate_to_account_screen()
+
     def handle_signout(self):
         session_id = self.main_window.user_session_id
         self.main_window.navigate_to_login_screen()
@@ -31,6 +34,3 @@ class MenuScreen(QWidget, Ui_MenuScreen):
                         QMessageBox.critical(self, "Error", "Connection was interrupted. Please try again later.")
         except Exception as error:
             QMessageBox.critical(self, "Error", str(error))
-
-    def handle_my_account(self):
-        print("my account clicked")

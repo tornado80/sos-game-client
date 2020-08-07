@@ -120,7 +120,7 @@
            <item>
             <widget class="QGroupBox" name="groupBox_3">
              <property name="title">
-              <string>Password</string>
+              <string>Password (leave these fields empty if you don't want to change password)</string>
              </property>
              <layout class="QGridLayout" name="gridLayout_3">
               <item row="0" column="1">
@@ -236,7 +236,7 @@
                  <enum>QAbstractSpinBox::NoButtons</enum>
                 </property>
                 <property name="displayFormat">
-                 <string>dd/MM/yyyy HH:mm:ss.zzzzzz</string>
+                 <string>dd/MM/yyyy HH:mm:ss.zzz</string>
                 </property>
                </widget>
               </item>
@@ -256,7 +256,7 @@
                  <enum>QAbstractSpinBox::NoButtons</enum>
                 </property>
                 <property name="displayFormat">
-                 <string>dd/MM/yyyy HH:mm:ss.zzzzzz</string>
+                 <string>dd/MM/yyyy HH:mm:ss.zzz</string>
                 </property>
                </widget>
               </item>

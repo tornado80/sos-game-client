@@ -18,6 +18,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.signupScreen.refresh_form()
         self.stackedWidget.setCurrentWidget(self.signupScreen)
 
+    def navigate_to_account_screen(self):
+        self.stackedWidget.setCurrentWidget(self.accountScreen)
+        self.accountScreen.refresh_form()
+
     def navigate_to_login_screen(self):
         self.user_session_id = None
         self.loginScreen.refresh_form()
@@ -28,7 +32,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.user_session_id = session_id
         self.set_server_address_readonly(True)
         self.stackedWidget.setCurrentWidget(self.menuScreen)
-        print("session_id from MainWindow", session_id)
 
     def set_server_address_readonly(self, readonly):
         self.serverIP1SpinBox.setReadOnly(readonly)
