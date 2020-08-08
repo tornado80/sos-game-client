@@ -63,9 +63,9 @@
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>0</y>
-            <width>868</width>
-            <height>673</height>
+            <y>-85</y>
+            <width>854</width>
+            <height>758</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -75,6 +75,30 @@
               <string>First name &amp;&amp; Last name</string>
              </property>
              <layout class="QGridLayout" name="gridLayout" columnstretch="0,0">
+              <item row="3" column="1">
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <item>
+                 <spacer name="horizontalSpacer_2">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="updateAccountButton">
+                  <property name="text">
+                   <string>Update account</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
               <item row="0" column="1">
                <widget class="QLineEdit" name="firstnameLineEdit"/>
               </item>
@@ -114,13 +138,37 @@
               <item row="0" column="1">
                <widget class="QLineEdit" name="usernameLineEdit"/>
               </item>
+              <item row="1" column="1">
+               <layout class="QHBoxLayout" name="horizontalLayout_4">
+                <item>
+                 <spacer name="horizontalSpacer_3">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="changeUsernameButton">
+                  <property name="text">
+                   <string>Change username</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
              </layout>
             </widget>
            </item>
            <item>
             <widget class="QGroupBox" name="groupBox_3">
              <property name="title">
-              <string>Password (leave these fields empty if you don't want to change password)</string>
+              <string>Password</string>
              </property>
              <layout class="QGridLayout" name="gridLayout_3">
               <item row="0" column="1">
@@ -150,6 +198,30 @@
                  <string>Repeat password:</string>
                 </property>
                </widget>
+              </item>
+              <item row="2" column="1">
+               <layout class="QHBoxLayout" name="horizontalLayout_6">
+                <item>
+                 <spacer name="horizontalSpacer_4">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="changePasswordButton">
+                  <property name="text">
+                   <string>Change password</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
               </item>
              </layout>
             </widget>
@@ -264,36 +336,34 @@
             </widget>
            </item>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,1,0,0">
-             <item>
-              <widget class="QLabel" name="label_11">
-               <property name="text">
-                <string>Current password:</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLineEdit" name="currentPasswordLineEdit">
-               <property name="echoMode">
-                <enum>QLineEdit::Password</enum>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="updateAccountButton">
-               <property name="text">
-                <string>Update account</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QPushButton" name="removeAccountButton">
-               <property name="text">
-                <string>Remove account</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
+            <widget class="QGroupBox" name="groupBox_6">
+             <property name="title">
+              <string>Current password to confirm</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_6" columnstretch="0,1">
+              <item row="0" column="0">
+               <widget class="QLabel" name="label_11">
+                <property name="text">
+                 <string>Current password:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="currentPasswordLineEdit">
+                <property name="echoMode">
+                 <enum>QLineEdit::Password</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="removeAccountButton">
+             <property name="text">
+              <string>Remove account</string>
+             </property>
+            </widget>
            </item>
            <item>
             <spacer name="verticalSpacer">

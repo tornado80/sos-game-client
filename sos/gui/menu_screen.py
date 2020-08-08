@@ -28,7 +28,9 @@ class MenuScreen(QWidget, Ui_MenuScreen):
                 request.send(sock)
                 response = Packet.recv(sock)
                 if response["command"] == "signout_response":
-                    if "error" in response["data"]:
+                    if "ok" in response["data"]:
+                        QMessageBox.information(self, "Information", "You were signed out of system.")
+                    elif "error" in response["data"]:
                         QMessageBox.critical(self, "Error", response["data"]["error"])
                     else:
                         QMessageBox.critical(self, "Error", "Connection was interrupted. Please try again later.")

@@ -50,13 +50,27 @@ class Ui_AccountScreen(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 868, 673))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, -85, 854, 758))
         self.verticalLayout_3 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.groupBox = QGroupBox(self.scrollAreaWidgetContents)
         self.groupBox.setObjectName(u"groupBox")
         self.gridLayout = QGridLayout(self.groupBox)
         self.gridLayout.setObjectName(u"gridLayout")
+        self.horizontalLayout_2 = QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_2.addItem(self.horizontalSpacer_2)
+
+        self.updateAccountButton = QPushButton(self.groupBox)
+        self.updateAccountButton.setObjectName(u"updateAccountButton")
+
+        self.horizontalLayout_2.addWidget(self.updateAccountButton)
+
+
+        self.gridLayout.addLayout(self.horizontalLayout_2, 3, 1, 1, 1)
+
         self.firstnameLineEdit = QLineEdit(self.groupBox)
         self.firstnameLineEdit.setObjectName(u"firstnameLineEdit")
 
@@ -94,6 +108,20 @@ class Ui_AccountScreen(object):
 
         self.gridLayout_2.addWidget(self.usernameLineEdit, 0, 1, 1, 1)
 
+        self.horizontalLayout_4 = QHBoxLayout()
+        self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_4.addItem(self.horizontalSpacer_3)
+
+        self.changeUsernameButton = QPushButton(self.groupBox_2)
+        self.changeUsernameButton.setObjectName(u"changeUsernameButton")
+
+        self.horizontalLayout_4.addWidget(self.changeUsernameButton)
+
+
+        self.gridLayout_2.addLayout(self.horizontalLayout_4, 1, 1, 1, 1)
+
         self.gridLayout_2.setColumnStretch(1, 1)
 
         self.verticalLayout_3.addWidget(self.groupBox_2)
@@ -123,6 +151,20 @@ class Ui_AccountScreen(object):
         self.label_5.setObjectName(u"label_5")
 
         self.gridLayout_3.addWidget(self.label_5, 1, 0, 1, 1)
+
+        self.horizontalLayout_6 = QHBoxLayout()
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_6.addItem(self.horizontalSpacer_4)
+
+        self.changePasswordButton = QPushButton(self.groupBox_3)
+        self.changePasswordButton.setObjectName(u"changePasswordButton")
+
+        self.horizontalLayout_6.addWidget(self.changePasswordButton)
+
+
+        self.gridLayout_3.addLayout(self.horizontalLayout_6, 2, 1, 1, 1)
 
 
         self.verticalLayout_3.addWidget(self.groupBox_3)
@@ -203,32 +245,29 @@ class Ui_AccountScreen(object):
 
         self.verticalLayout_3.addWidget(self.groupBox_5)
 
-        self.horizontalLayout_3 = QHBoxLayout()
-        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.label_11 = QLabel(self.scrollAreaWidgetContents)
+        self.groupBox_6 = QGroupBox(self.scrollAreaWidgetContents)
+        self.groupBox_6.setObjectName(u"groupBox_6")
+        self.gridLayout_6 = QGridLayout(self.groupBox_6)
+        self.gridLayout_6.setObjectName(u"gridLayout_6")
+        self.label_11 = QLabel(self.groupBox_6)
         self.label_11.setObjectName(u"label_11")
 
-        self.horizontalLayout_3.addWidget(self.label_11)
+        self.gridLayout_6.addWidget(self.label_11, 0, 0, 1, 1)
 
-        self.currentPasswordLineEdit = QLineEdit(self.scrollAreaWidgetContents)
+        self.currentPasswordLineEdit = QLineEdit(self.groupBox_6)
         self.currentPasswordLineEdit.setObjectName(u"currentPasswordLineEdit")
         self.currentPasswordLineEdit.setEchoMode(QLineEdit.Password)
 
-        self.horizontalLayout_3.addWidget(self.currentPasswordLineEdit)
+        self.gridLayout_6.addWidget(self.currentPasswordLineEdit, 0, 1, 1, 1)
 
-        self.updateAccountButton = QPushButton(self.scrollAreaWidgetContents)
-        self.updateAccountButton.setObjectName(u"updateAccountButton")
+        self.gridLayout_6.setColumnStretch(1, 1)
 
-        self.horizontalLayout_3.addWidget(self.updateAccountButton)
+        self.verticalLayout_3.addWidget(self.groupBox_6)
 
         self.removeAccountButton = QPushButton(self.scrollAreaWidgetContents)
         self.removeAccountButton.setObjectName(u"removeAccountButton")
 
-        self.horizontalLayout_3.addWidget(self.removeAccountButton)
-
-        self.horizontalLayout_3.setStretch(1, 1)
-
-        self.verticalLayout_3.addLayout(self.horizontalLayout_3)
+        self.verticalLayout_3.addWidget(self.removeAccountButton)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
@@ -258,13 +297,16 @@ class Ui_AccountScreen(object):
         AccountScreen.setWindowTitle(QCoreApplication.translate("AccountScreen", u"Form", None))
         self.backButton.setText(QCoreApplication.translate("AccountScreen", u"Back", None))
         self.groupBox.setTitle(QCoreApplication.translate("AccountScreen", u"First name && Last name", None))
+        self.updateAccountButton.setText(QCoreApplication.translate("AccountScreen", u"Update account", None))
         self.label.setText(QCoreApplication.translate("AccountScreen", u"First name:", None))
         self.label_2.setText(QCoreApplication.translate("AccountScreen", u"Last name:", None))
         self.groupBox_2.setTitle(QCoreApplication.translate("AccountScreen", u"Username", None))
         self.label_3.setText(QCoreApplication.translate("AccountScreen", u"Username:", None))
-        self.groupBox_3.setTitle(QCoreApplication.translate("AccountScreen", u"Password (leave these fields empty if you don't want to change password)", None))
+        self.changeUsernameButton.setText(QCoreApplication.translate("AccountScreen", u"Change username", None))
+        self.groupBox_3.setTitle(QCoreApplication.translate("AccountScreen", u"Password", None))
         self.label_4.setText(QCoreApplication.translate("AccountScreen", u"New password:", None))
         self.label_5.setText(QCoreApplication.translate("AccountScreen", u"Repeat password:", None))
+        self.changePasswordButton.setText(QCoreApplication.translate("AccountScreen", u"Change password", None))
         self.groupBox_4.setTitle(QCoreApplication.translate("AccountScreen", u"Rating", None))
         self.label_6.setText(QCoreApplication.translate("AccountScreen", u"Total rating:", None))
         self.label_7.setText(QCoreApplication.translate("AccountScreen", u"Total wins:", None))
@@ -274,8 +316,8 @@ class Ui_AccountScreen(object):
         self.joinedDateTimeEdit.setDisplayFormat(QCoreApplication.translate("AccountScreen", u"dd/MM/yyyy HH:mm:ss.zzz", None))
         self.label_10.setText(QCoreApplication.translate("AccountScreen", u"Last login:", None))
         self.lastLoginDateTimeEdit.setDisplayFormat(QCoreApplication.translate("AccountScreen", u"dd/MM/yyyy HH:mm:ss.zzz", None))
+        self.groupBox_6.setTitle(QCoreApplication.translate("AccountScreen", u"Current password to confirm", None))
         self.label_11.setText(QCoreApplication.translate("AccountScreen", u"Current password:", None))
-        self.updateAccountButton.setText(QCoreApplication.translate("AccountScreen", u"Update account", None))
         self.removeAccountButton.setText(QCoreApplication.translate("AccountScreen", u"Remove account", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("AccountScreen", u"Profile && Rating", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("AccountScreen", u"Games History", None))
