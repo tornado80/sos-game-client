@@ -98,6 +98,7 @@ class Ui_MenuScreen(object):
         self.gameIDSpinBox.setObjectName(u"gameIDSpinBox")
         self.gameIDSpinBox.setAlignment(Qt.AlignCenter)
         self.gameIDSpinBox.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.gameIDSpinBox.setMaximum(2147483647)
         self.gameIDSpinBox.setValue(0)
 
         self.gridLayout_3.addWidget(self.gameIDSpinBox, 3, 1, 1, 1)
@@ -244,7 +245,7 @@ class Ui_MenuScreen(object):
         self.usernameLineEdit.setPlaceholderText(QCoreApplication.translate("MenuScreen", u"username", None))
         self.toolBox.setItemText(self.toolBox.indexOf(self.page), QCoreApplication.translate("MenuScreen", u"Join Game", None))
         self.label.setText(QCoreApplication.translate("MenuScreen", u"Player count:", None))
-        self.label_4.setText(QCoreApplication.translate("MenuScreen", u"<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ef2929;\">NOTE</span></p><p><span style=\" font-weight:600;\">1.</span> You can setup multiplayer game by increasing players upto 20.</p><p><span style=\" font-weight:600;\">2. </span>You can also increase board size upto 100. Board will be a square with given dimention.</p><p><span style=\" font-weight:600;\">3. </span>Note that limits mentioned above are due to graphical limits not game server.</p><p><span style=\" font-weight:600;\">4.</span> You can also let your game to be public or private. Namely you can give game id and your username to your friends to start game (private) or let it to be open by anyone connecting to server (public).</p><p><span style=\" font-weight:600;\">5.</span> Finally press <span style=\" font-style:italic;\">Create game</span> to broadcast the game and wait for players to join. As soon as number of players reach the given amount, you will be navigated to game screen.</p></body></html>", None))
+        self.label_4.setText(QCoreApplication.translate("MenuScreen", u"<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ef2929;\">NOTE</span></p><p><span style=\" font-weight:600;\">1.</span> You can setup multiplayer game by increasing players upto 20.</p><p><span style=\" font-weight:600;\">2. </span>You can also increase board size upto 100. Board will be a square with given dimention.</p><p><span style=\" font-weight:600;\">3. </span>Note that limits mentioned above are due to graphical limits not game server.</p><p><span style=\" font-weight:600;\">4.</span> You can also let your game to be public or private. Namely you can give game id and your username to your friends to start game (private) or let it to be open by anyone connecting to server (public).</p><p><span style=\" font-weight:600;\">5.</span> Finally press <span style=\" font-style:italic;\">Create game</span> to broadcast the game and wait for players to join. As soon as number of players reach the given amount, game will be started automatically.</p></body></html>", None))
         self.publicRadioButton.setText(QCoreApplication.translate("MenuScreen", u"Public", None))
         self.privateRadioButton.setText(QCoreApplication.translate("MenuScreen", u"Private", None))
         self.createGameButton.setText(QCoreApplication.translate("MenuScreen", u"Create game", None))

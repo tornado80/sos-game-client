@@ -21,6 +21,7 @@
       <widget class="MenuScreen" name="menuScreen"/>
       <widget class="SignUpScreen" name="signupScreen"/>
       <widget class="AccountScreen" name="accountScreen"/>
+      <widget class="GameScreen" name="gameScreen"/>
      </widget>
     </item>
     <item>
@@ -189,6 +190,12 @@
    <class>AccountScreen</class>
    <extends>QWidget</extends>
    <header>sos.gui.account_screen</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>GameScreen</class>
+   <extends>QWidget</extends>
+   <header>sos.gui.game_screen</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

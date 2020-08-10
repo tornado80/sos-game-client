@@ -50,5 +50,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         return host, port
 
     def closeEvent(self, event):
-        self.menuScreen.handle_signout()
-        event.ignore()
+        if self.user_session_id:
+            self.menuScreen.handle_signout()
+        event.accept()

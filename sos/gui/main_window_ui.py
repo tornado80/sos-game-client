@@ -19,6 +19,7 @@ from sos.gui.login_screen import LoginScreen
 from sos.gui.signup_screen import SignUpScreen
 from sos.gui.menu_screen import MenuScreen
 from sos.gui.account_screen import AccountScreen
+from sos.gui.game_screen import GameScreen
 
 
 class Ui_MainWindow(object):
@@ -44,6 +45,9 @@ class Ui_MainWindow(object):
         self.accountScreen = AccountScreen()
         self.accountScreen.setObjectName(u"accountScreen")
         self.stackedWidget.addWidget(self.accountScreen)
+        self.gameScreen = GameScreen()
+        self.gameScreen.setObjectName(u"gameScreen")
+        self.stackedWidget.addWidget(self.gameScreen)
 
         self.verticalLayout.addWidget(self.stackedWidget)
 

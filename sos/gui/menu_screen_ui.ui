@@ -153,6 +153,9 @@
             <property name="buttonSymbols">
              <enum>QAbstractSpinBox::NoButtons</enum>
             </property>
+            <property name="maximum">
+             <number>2147483647</number>
+            </property>
             <property name="value">
              <number>0</number>
             </property>
@@ -266,7 +269,7 @@
           <item row="0" column="0" colspan="2">
            <widget class="QLabel" name="label_4">
             <property name="text">
-             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ef2929;&quot;&gt;NOTE&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;1.&lt;/span&gt; You can setup multiplayer game by increasing players upto 20.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;2. &lt;/span&gt;You can also increase board size upto 100. Board will be a square with given dimention.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;3. &lt;/span&gt;Note that limits mentioned above are due to graphical limits not game server.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;4.&lt;/span&gt; You can also let your game to be public or private. Namely you can give game id and your username to your friends to start game (private) or let it to be open by anyone connecting to server (public).&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;5.&lt;/span&gt; Finally press &lt;span style=&quot; font-style:italic;&quot;&gt;Create game&lt;/span&gt; to broadcast the game and wait for players to join. As soon as number of players reach the given amount, you will be navigated to game screen.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#ef2929;&quot;&gt;NOTE&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;1.&lt;/span&gt; You can setup multiplayer game by increasing players upto 20.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;2. &lt;/span&gt;You can also increase board size upto 100. Board will be a square with given dimention.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;3. &lt;/span&gt;Note that limits mentioned above are due to graphical limits not game server.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;4.&lt;/span&gt; You can also let your game to be public or private. Namely you can give game id and your username to your friends to start game (private) or let it to be open by anyone connecting to server (public).&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;5.&lt;/span&gt; Finally press &lt;span style=&quot; font-style:italic;&quot;&gt;Create game&lt;/span&gt; to broadcast the game and wait for players to join. As soon as number of players reach the given amount, game will be started automatically.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
