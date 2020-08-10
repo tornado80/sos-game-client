@@ -81,12 +81,12 @@ class Ui_GameScreen(object):
         self.scrollArea.setFrameShape(QFrame.Box)
         self.scrollArea.setFrameShadow(QFrame.Plain)
         self.scrollArea.setWidgetResizable(True)
-        self.gameBoard = QWidget()
+        self.widget = QWidget()
+        self.widget.setObjectName(u"widget")
+        self.widget.setGeometry(QRect(0, 0, 567, 677))
+        self.gameBoard = QGridLayout(self.widget)
         self.gameBoard.setObjectName(u"gameBoard")
-        self.gameBoard.setGeometry(QRect(0, 0, 567, 677))
-        self.gridLayout_2 = QGridLayout(self.gameBoard)
-        self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.scrollArea.setWidget(self.gameBoard)
+        self.scrollArea.setWidget(self.widget)
 
         self.gridLayout_3.addWidget(self.scrollArea, 0, 0, 8, 1)
 

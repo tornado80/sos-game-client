@@ -9,6 +9,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.signupScreen.main_window = self
         self.menuScreen.main_window = self
         self.accountScreen.main_window = self
+        self.gameScreen.main_window = self
         self.loginScreen.loginSuccessful.connect(self.navigate_to_menu_screen)
         self.signupScreen.signupSuccessful.connect(self.navigate_to_login_screen)
         self.user_session_id = None
@@ -21,6 +22,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def navigate_to_account_screen(self):
         self.stackedWidget.setCurrentWidget(self.accountScreen)
         self.accountScreen.refresh_form()
+
+    def navigate_to_game_screen(self, *args):
+        self.stackedWidget.setCurrentWidget(self.gameScreen)
+        self.gameScreen.setup_game_screen(*args)
 
     def navigate_to_login_screen(self):
         self.user_session_id = None
