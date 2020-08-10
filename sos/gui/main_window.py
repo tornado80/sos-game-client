@@ -48,4 +48,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         port = self.serverPortSpinBox.value()
         host = f"{part1}.{part2}.{part3}.{part4}"
         return host, port
-        
+
+    def closeEvent(self, event):
+        self.menuScreen.handle_signout()
+        event.ignore()
