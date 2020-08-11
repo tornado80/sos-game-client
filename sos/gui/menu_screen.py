@@ -38,7 +38,8 @@ class MenuScreen(QWidget, Ui_MenuScreen):
                     response["data"]["game_id"], 
                     response["data"]["creator_username"], 
                     response["data"]["board_size"], 
-                    response["data"]["player_count"]
+                    response["data"]["player_count"],
+                    response["data"]["color"]
                 )
         except Exception as error:
             QMessageBox.critical(self, "Error", str(error))
@@ -69,7 +70,8 @@ class MenuScreen(QWidget, Ui_MenuScreen):
                     response["data"]["game_id"], 
                     response["data"]["creator_username"], 
                     response["data"]["board_size"], 
-                    response["data"]["player_count"]
+                    response["data"]["player_count"],
+                    response["data"]["color"]
                 )
         except Exception as error:
             QMessageBox.critical(self, "Error", str(error))

@@ -11,65 +11,19 @@ class Cell(QLabel):
         super().__init__()
         self.row = row
         self.column = column
-        self.state = 0 # 0 for free, 1 for O, 2 for S, 3 for used O, 4 for used S
-        self.background_color = "silver" # silver for free, red for used S or O (in a triple SOS), blue for S or O
-        self.set_to_free()
+        self.state = 0
         self.setAlignment(Qt.AlignCenter)
 
-    def set_style(self):
-        self.setStyleSheet(f"background-color:{self.background_color};color:white;font-size:48pt;font-weight:bold;")
-
-    def set_by_state(self, state):
-        self.state = state
-        if self.state == 0:
-            self.set_to_free()
-        elif self.state == 1:
-            self.set_to_o()
-        elif self.state == 2:
-            self.set_to_s()
-        elif self.state == 3:
-            self.set_to_used_o()
-        elif self.state == 4:
-            self.set_to_used_s()
-
-    def set_to_used_s(self):
-        self.state = 4
-        self.setText("S")
-        self.background_color = "red"
-        self.set_style()
-
-    def set_to_used_o(self):
-        self.state = 3
-        self.setText("O")
-        self.background_color = "red"
-        self.set_style()
-
-    def set_to_free(self):
-        self.state = 0
-        self.setText("")
-        self.background_color = "silver"
-        self.set_style()
-
-    def set_to_o(self):
-        self.state = 1
-        self.setText("O")
-        self.background_color = "blue"
-        self.set_style()
-
-    def set_to_s(self):
-        self.state = 2
-        self.setText("S")
-        self.background_color = "blue"
-        self.set_style()
+    def set_style(self, letter, color):
+        self.setText(letter)
+        self.setStyleSheet(f"background-color:{color};color:white;font-size:48pt;font-weight:bold;")
 
     def mousePressEvent(self, event):
         if self.state == 0:
             if event.button() == Qt.MouseButton.LeftButton:
                 self.sWanted.emit(self.row, self.column)
-                self.set_to_s()
             elif event.button() == Qt.MouseButton.RightButton:
                 self.oWanted.emit(self.row, self.column)
-                self.set_to_o()
 
 class GameServerListener(QThread):
     newEvent = Signal(dict)
@@ -116,13 +70,20 @@ class GameScreen(QWidget, Ui_GameScreen):
             players = response["data"]["players"]
             for player_username, player_score in players.items():
                 row = self.leaderBoard.rowCount()
+                color = response["data"]["colors"][player_username]
                 usernameLabel = QLabel(player_username)
                 scoreLabel = QLabel(player_score)
+                usernameLabel.setStyleSheet(f"color:{color};")
                 usernameLabel.setAlignment(Qt.AlignCenter)
                 scoreLabel.setAlignment(Qt.AlignCenter)
                 self.leaderBoard.addWidget(usernameLabel, row, 0)
                 self.leaderBoard.addWidget(scoreLabel, row, 1)
                 self.leaderBoardRows.append([usernameLabel, scoreLabel])
+        elif response["command"] == "game_runner_board_status":
+            for i in range(self.board_size):
+                for j in range(self.board_size):
+                    self.board[i][j].state = 0 if response["data"]["board"][i][j][1] == "" else 1
+                    self.board[i][j].set_style(response["data"]["board"][i][j][1], response["data"]["board"][i][j][0])
 
     def handle_s_wanted(self, row, column):
         print("s wanted")
@@ -157,9 +118,10 @@ class GameScreen(QWidget, Ui_GameScreen):
         self.boardSizeLabel.setText(str(self.board_size))
         self.playersCountLabel.setText(str(self.player_count))
 
-    def setup_game_screen(self, sock, game_id, creator_username, board_size, player_count):
+    def setup_game_screen(self, sock, game_id, creator_username, board_size, player_count, color):
         self.game_id = game_id
         self.sock = sock
+        self.color = color
         self.creator_username = creator_username
         self.board_size = board_size
         self.player_count = player_count
