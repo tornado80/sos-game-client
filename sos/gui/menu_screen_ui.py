@@ -103,11 +103,11 @@ class Ui_MenuScreen(object):
 
         self.gridLayout_3.addWidget(self.gameIDSpinBox, 3, 1, 1, 1)
 
-        self.usernameLineEdit = QLineEdit(self.frame_2)
-        self.usernameLineEdit.setObjectName(u"usernameLineEdit")
-        self.usernameLineEdit.setAlignment(Qt.AlignCenter)
+        self.creatorUsernameLineEdit = QLineEdit(self.frame_2)
+        self.creatorUsernameLineEdit.setObjectName(u"creatorUsernameLineEdit")
+        self.creatorUsernameLineEdit.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_3.addWidget(self.usernameLineEdit, 2, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.creatorUsernameLineEdit, 2, 1, 1, 1)
 
 
         self.gridLayout_4.addWidget(self.frame_2, 1, 1, 1, 2)
@@ -123,7 +123,7 @@ class Ui_MenuScreen(object):
         self.toolBox.addItem(self.page, u"Join Game")
         self.page_2 = QWidget()
         self.page_2.setObjectName(u"page_2")
-        self.page_2.setGeometry(QRect(0, 0, 844, 547))
+        self.page_2.setGeometry(QRect(0, 0, 294, 665))
         self.gridLayout = QGridLayout(self.page_2)
         self.gridLayout.setObjectName(u"gridLayout")
         self.frame = QFrame(self.page_2)
@@ -242,7 +242,7 @@ class Ui_MenuScreen(object):
         self.label_6.setText(QCoreApplication.translate("MenuScreen", u"<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ef2929;\">NOTE</span></p><p><span style=\" font-weight:600;\">1.</span> First choose the game type (public or private).</p><p><span style=\" font-weight:600;\">2. </span>In case of public game, choose a game available globally.</p><p><span style=\" font-weight:600;\">3. </span>In case of private game, enter game creator username and game id to enter game screen. You can also see who has invited you to a game. Double click on the item and join the game.</p></body></html>", None))
         self.label_8.setText(QCoreApplication.translate("MenuScreen", u"Game ID:", None))
         self.joinGameButton.setText(QCoreApplication.translate("MenuScreen", u"Join game", None))
-        self.usernameLineEdit.setPlaceholderText(QCoreApplication.translate("MenuScreen", u"username", None))
+        self.creatorUsernameLineEdit.setPlaceholderText(QCoreApplication.translate("MenuScreen", u"username", None))
         self.toolBox.setItemText(self.toolBox.indexOf(self.page), QCoreApplication.translate("MenuScreen", u"Join Game", None))
         self.label.setText(QCoreApplication.translate("MenuScreen", u"Player count:", None))
         self.label_4.setText(QCoreApplication.translate("MenuScreen", u"<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ef2929;\">NOTE</span></p><p><span style=\" font-weight:600;\">1.</span> You can setup multiplayer game by increasing players upto 20.</p><p><span style=\" font-weight:600;\">2. </span>You can also increase board size upto 100. Board will be a square with given dimention.</p><p><span style=\" font-weight:600;\">3. </span>Note that limits mentioned above are due to graphical limits not game server.</p><p><span style=\" font-weight:600;\">4.</span> You can also let your game to be public or private. Namely you can give game id and your username to your friends to start game (private) or let it to be open by anyone connecting to server (public).</p><p><span style=\" font-weight:600;\">5.</span> Finally press <span style=\" font-style:italic;\">Create game</span> to broadcast the game and wait for players to join. As soon as number of players reach the given amount, game will be started automatically.</p></body></html>", None))

@@ -14,13 +14,6 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_3">
-   <item row="6" column="2">
-    <widget class="QPushButton" name="decreasePlayerButton">
-     <property name="text">
-      <string>Decrease player</string>
-     </property>
-    </widget>
-   </item>
    <item row="3" column="1">
     <widget class="QLabel" name="label_4">
      <property name="text">
@@ -47,15 +40,15 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>232</width>
-        <height>492</height>
+        <width>180</width>
+        <height>523</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
         <widget class="QLabel" name="label_7">
          <property name="text">
-          <string>Players:</string>
+          <string>Players joined:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -102,7 +95,7 @@
      </widget>
     </widget>
    </item>
-   <item row="0" column="0" rowspan="8">
+   <item row="0" column="0" rowspan="7">
     <widget class="QScrollArea" name="scrollArea">
      <property name="frameShape">
       <enum>QFrame::Box</enum>
@@ -118,7 +111,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>567</width>
+        <width>619</width>
         <height>677</height>
        </rect>
       </property>
@@ -146,7 +139,7 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="2">
+   <item row="6" column="2">
     <widget class="QPushButton" name="backButton">
      <property name="text">
       <string>Back</string>
@@ -183,7 +176,7 @@
      </property>
     </widget>
    </item>
-   <item row="7" column="1">
+   <item row="6" column="1">
     <widget class="QPushButton" name="leaveGameButton">
      <property name="text">
       <string>Leave game</string>
@@ -197,13 +190,6 @@
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1">
-    <widget class="QPushButton" name="increasePlayerButton">
-     <property name="text">
-      <string>Increase player</string>
      </property>
     </widget>
    </item>

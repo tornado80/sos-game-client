@@ -23,11 +23,6 @@ class Ui_GameScreen(object):
         GameScreen.resize(827, 697)
         self.gridLayout_3 = QGridLayout(GameScreen)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.decreasePlayerButton = QPushButton(GameScreen)
-        self.decreasePlayerButton.setObjectName(u"decreasePlayerButton")
-
-        self.gridLayout_3.addWidget(self.decreasePlayerButton, 6, 2, 1, 1)
-
         self.label_4 = QLabel(GameScreen)
         self.label_4.setObjectName(u"label_4")
         self.label_4.setAlignment(Qt.AlignCenter)
@@ -41,7 +36,7 @@ class Ui_GameScreen(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 232, 492))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 180, 523))
         self.verticalLayout = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.label_7 = QLabel(self.scrollAreaWidgetContents)
@@ -83,12 +78,12 @@ class Ui_GameScreen(object):
         self.scrollArea.setWidgetResizable(True)
         self.widget = QWidget()
         self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(0, 0, 567, 677))
+        self.widget.setGeometry(QRect(0, 0, 619, 677))
         self.gameBoard = QGridLayout(self.widget)
         self.gameBoard.setObjectName(u"gameBoard")
         self.scrollArea.setWidget(self.widget)
 
-        self.gridLayout_3.addWidget(self.scrollArea, 0, 0, 8, 1)
+        self.gridLayout_3.addWidget(self.scrollArea, 0, 0, 7, 1)
 
         self.boardSizeLabel = QLabel(GameScreen)
         self.boardSizeLabel.setObjectName(u"boardSizeLabel")
@@ -105,7 +100,7 @@ class Ui_GameScreen(object):
         self.backButton = QPushButton(GameScreen)
         self.backButton.setObjectName(u"backButton")
 
-        self.gridLayout_3.addWidget(self.backButton, 7, 2, 1, 1)
+        self.gridLayout_3.addWidget(self.backButton, 6, 2, 1, 1)
 
         self.label = QLabel(GameScreen)
         self.label.setObjectName(u"label")
@@ -128,18 +123,13 @@ class Ui_GameScreen(object):
         self.leaveGameButton = QPushButton(GameScreen)
         self.leaveGameButton.setObjectName(u"leaveGameButton")
 
-        self.gridLayout_3.addWidget(self.leaveGameButton, 7, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.leaveGameButton, 6, 1, 1, 1)
 
         self.label_2 = QLabel(GameScreen)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_3.addWidget(self.label_2, 1, 1, 1, 1)
-
-        self.increasePlayerButton = QPushButton(GameScreen)
-        self.increasePlayerButton.setObjectName(u"increasePlayerButton")
-
-        self.gridLayout_3.addWidget(self.increasePlayerButton, 6, 1, 1, 1)
 
         self.gameIDLabel = QLabel(GameScreen)
         self.gameIDLabel.setObjectName(u"gameIDLabel")
@@ -160,9 +150,8 @@ class Ui_GameScreen(object):
 
     def retranslateUi(self, GameScreen):
         GameScreen.setWindowTitle(QCoreApplication.translate("GameScreen", u"Form", None))
-        self.decreasePlayerButton.setText(QCoreApplication.translate("GameScreen", u"Decrease player", None))
         self.label_4.setText(QCoreApplication.translate("GameScreen", u"Creator:", None))
-        self.label_7.setText(QCoreApplication.translate("GameScreen", u"Players:", None))
+        self.label_7.setText(QCoreApplication.translate("GameScreen", u"Players joined:", None))
         self.noPlayerJoinedLabel.setText(QCoreApplication.translate("GameScreen", u"No player joined yet!", None))
         self.boardSizeLabel.setText(QCoreApplication.translate("GameScreen", u"0", None))
         self.label_3.setText(QCoreApplication.translate("GameScreen", u"Players count:", None))
@@ -172,7 +161,6 @@ class Ui_GameScreen(object):
         self.playersCountLabel.setText(QCoreApplication.translate("GameScreen", u"0", None))
         self.leaveGameButton.setText(QCoreApplication.translate("GameScreen", u"Leave game", None))
         self.label_2.setText(QCoreApplication.translate("GameScreen", u"Board size:", None))
-        self.increasePlayerButton.setText(QCoreApplication.translate("GameScreen", u"Increase player", None))
         self.gameIDLabel.setText(QCoreApplication.translate("GameScreen", u"0", None))
         self.pushButton.setText(QCoreApplication.translate("GameScreen", u"Get hint (3)", None))
     # retranslateUi
