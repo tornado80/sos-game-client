@@ -11,7 +11,7 @@ class Cell(QLabel):
         super().__init__()
         self.row = row
         self.column = column
-        self.state = 0 # 0 for free, 1 for O, 2 for S
+        self.state = 0 # 0 for free, 1 for O, 2 for S, 3 for used O, 4 for used S
         self.background_color = "silver" # silver for free, red for used S or O (in a triple SOS), blue for S or O
         self.set_to_free()
         self.setAlignment(Qt.AlignCenter)
@@ -19,7 +19,28 @@ class Cell(QLabel):
     def set_style(self):
         self.setStyleSheet(f"background-color:{self.background_color};color:white;font-size:48pt;font-weight:bold;")
 
-    def set_to_used(self):
+    def set_by_state(self, state):
+        self.state = state
+        if self.state == 0:
+            self.set_to_free()
+        elif self.state == 1:
+            self.set_to_o()
+        elif self.state == 2:
+            self.set_to_s()
+        elif self.state == 3:
+            self.set_to_used_o()
+        elif self.state == 4:
+            self.set_to_used_s()
+
+    def set_to_used_s(self):
+        self.state = 4
+        self.setText("S")
+        self.background_color = "red"
+        self.set_style()
+
+    def set_to_used_o(self):
+        self.state = 3
+        self.setText("O")
         self.background_color = "red"
         self.set_style()
 
@@ -51,7 +72,7 @@ class Cell(QLabel):
                 self.set_to_o()
 
 class GameServerListener(QThread):
-    newMessage = Signal(dict)
+    newEvent = Signal(dict)
     def __init__(self, sock):
         super().__init__()
         self.sock = sock
@@ -59,7 +80,7 @@ class GameServerListener(QThread):
     def run(self):
         while True:
             response = Packet.recv(self.sock)
-            self.newMessage.emit(response)
+            self.newEvent.emit(response)
             if response["command"] == "game_runner_abort":
                 self.sock.close()
                 return
@@ -69,9 +90,14 @@ class GameScreen(QWidget, Ui_GameScreen):
         super().__init__()
         self.setupUi(self)
         self.backButton.clicked.connect(self.handle_back)
-        self._leader_board_players = {}
+        self.leaderBoardRows = []
 
     def handle_back(self):
+        if QMessageBox.question(self, 
+            "User Consent", 
+            "Do you really want to quit the game? If all the players hit back, game is automatically deleted and you may lose points.", 
+            QMessageBox.No, QMessageBox.Yes) == QMessageBox.No:
+            return        
         request = Packet()
         request["command"] = "game_runner_disconnect"
         request.send(self.sock)
@@ -79,26 +105,24 @@ class GameScreen(QWidget, Ui_GameScreen):
 
     def setup_game_listener(self):
         self.listener = GameServerListener(self.sock)
-        self.listener.newMessage.connect(self.handle_new_message)
+        self.listener.newEvent.connect(self.handle_new_event)
         self.listener.start()
 
-    def handle_new_message(self, response):
-        if response["command"] == "game_runner_new_player_connected":
+    def handle_new_event(self, response):
+        if response["command"] == "game_runner_players_status":
+            self.clear_leader_board()
             if self.noPlayerJoinedLabel.isVisible():
                 self.noPlayerJoinedLabel.setVisible(False)
-            new_player = response["data"]["player"]
-            new_player_account_id = new_player[0]
-            new_player_username = new_player[1]
-            new_player_score = new_player[2]
-            usernameLabel = QLabel(new_player_username)
-            scoreLabel = QLabel(str(new_player_score))
-            if new_player_account_id in self._leader_board_players:
-                row = self._leader_board_players[new_player_account_id][0]
-            else:
+            players = response["data"]["players"]
+            for player_username, player_score in players.items():
                 row = self.leaderBoard.rowCount()
-            self._leader_board_players[new_player_account_id] = [row, usernameLabel, scoreLabel]
-            self.leaderBoard.addWidget(usernameLabel, row, 0)
-            self.leaderBoard.addWidget(scoreLabel, row, 1)
+                usernameLabel = QLabel(player_username)
+                scoreLabel = QLabel(player_score)
+                usernameLabel.setAlignment(Qt.AlignCenter)
+                scoreLabel.setAlignment(Qt.AlignCenter)
+                self.leaderBoard.addWidget(usernameLabel, row, 0)
+                self.leaderBoard.addWidget(scoreLabel, row, 1)
+                self.leaderBoardRows.append([usernameLabel, scoreLabel])
 
     def handle_s_wanted(self, row, column):
         print("s wanted")
@@ -117,15 +141,21 @@ class GameScreen(QWidget, Ui_GameScreen):
                 self.board[i].append(cell)
                 self.gameBoard.addWidget(cell, i, j)
 
+    def clear_leader_board(self):
+        for row in self.leaderBoardRows:
+            self.leaderBoard.removeWidget(row[0])
+            row[0].setParent(None)
+            self.leaderBoard.removeWidget(row[1])
+            row[1].setParent(None)
+        self.leaderBoardRows.clear()
+
     def setup_leader_board(self):
         self.noPlayerJoinedLabel.setVisible(True)
+        self.clear_leader_board()
         self.gameIDLabel.setText(str(self.game_id))
         self.creatorUsernameLabel.setText(self.creator_username)
         self.boardSizeLabel.setText(str(self.board_size))
         self.playersCountLabel.setText(str(self.player_count))
-        for player_row in self._leader_board_players.values():
-            self.leaderBoard.removeWidget(player_row[1])
-            self.leaderBoard.removeWidget(player_row[2])
 
     def setup_game_screen(self, sock, game_id, creator_username, board_size, player_count):
         self.game_id = game_id
