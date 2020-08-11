@@ -67,6 +67,12 @@ class Ui_GameScreen(object):
 
         self.verticalLayout.addItem(self.verticalSpacer)
 
+        self.yourTurnLabel = QLabel(self.scrollAreaWidgetContents)
+        self.yourTurnLabel.setObjectName(u"yourTurnLabel")
+        self.yourTurnLabel.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout.addWidget(self.yourTurnLabel)
+
         self.scrollArea_2.setWidget(self.scrollAreaWidgetContents)
 
         self.gridLayout_3.addWidget(self.scrollArea_2, 4, 1, 1, 2)
@@ -148,6 +154,7 @@ class Ui_GameScreen(object):
         self.label_4.setText(QCoreApplication.translate("GameScreen", u"Creator:", None))
         self.label_7.setText(QCoreApplication.translate("GameScreen", u"Players joined:", None))
         self.noPlayerJoinedLabel.setText(QCoreApplication.translate("GameScreen", u"No player joined yet!", None))
+        self.yourTurnLabel.setText(QCoreApplication.translate("GameScreen", u"<html><head/><body><p><span style=\" font-weight:600; color:#ef2929;\">YOUR TURN</span></p></body></html>", None))
         self.boardSizeLabel.setText(QCoreApplication.translate("GameScreen", u"0", None))
         self.label_3.setText(QCoreApplication.translate("GameScreen", u"Players count:", None))
         self.backButton.setText(QCoreApplication.translate("GameScreen", u"Back", None))

@@ -45,6 +45,7 @@ class GameScreen(QWidget, Ui_GameScreen):
         self.setupUi(self)
         self.backButton.clicked.connect(self.handle_back)
         self.leaderBoardRows = []
+        self.my_turn = False
 
     def handle_back(self):
         if QMessageBox.question(self, 
@@ -84,12 +85,39 @@ class GameScreen(QWidget, Ui_GameScreen):
                 for j in range(self.board_size):
                     self.board[i][j].state = 0 if response["data"]["board"][i][j][1] == "" else 1
                     self.board[i][j].set_style(response["data"]["board"][i][j][1], response["data"]["board"][i][j][0])
+        elif response["command"] == "game_runner_your_turn":
+            self.my_turn = True
+            self.yourTurnLabel.setVisible(True)
 
     def handle_s_wanted(self, row, column):
-        print("s wanted")
+        if self.my_turn:
+            self.board[row][column].set_style("S", self.color)
+            self.board[row][column].state = 1
+            self.my_turn = False
+            self.yourTurnLabel.setVisible(False)
+            request = Packet()
+            request["command"] = "game_runner_my_turn"
+            request["data"] = {
+                "row" : row,
+                "column" : column,
+                "letter" : "S"
+            }
+            request.send(self.sock)
 
     def handle_o_wanted(self, row, column):
-        print("o wanted")
+        if self.my_turn:
+            self.board[row][column].set_style("O", self.color)
+            self.board[row][column].state = 1
+            self.my_turn = False
+            self.yourTurnLabel.setVisible(False)
+            request = Packet()
+            request["command"] = "game_runner_my_turn"
+            request["data"] = {
+                "row" : row,
+                "column" : column,
+                "letter" : "O"
+            }
+            request.send(self.sock)            
 
     def setup_game_board(self):
         self.board = []
@@ -112,6 +140,7 @@ class GameScreen(QWidget, Ui_GameScreen):
 
     def setup_leader_board(self):
         self.noPlayerJoinedLabel.setVisible(True)
+        self.yourTurnLabel.setVisible(False)
         self.clear_leader_board()
         self.gameIDLabel.setText(str(self.game_id))
         self.creatorUsernameLabel.setText(self.creator_username)
