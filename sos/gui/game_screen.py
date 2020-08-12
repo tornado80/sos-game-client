@@ -124,7 +124,8 @@ class GameScreen(QWidget, Ui_GameScreen):
                 QMessageBox.information(None, "Game darw", "Game has led to draw.")
             elif "winner" in response:
                 QMessageBox.information(None, "Winner announced", "{} has won the game.".format(response["winner"]))
-
+            self.main_window.navigate_to_menu_screen(self.main_window.user_session_id)
+            
     def handle_s_wanted(self, row, column):
         if self.my_turn:
             request = Packet()
