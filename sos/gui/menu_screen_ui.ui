@@ -207,8 +207,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>844</width>
-        <height>547</height>
+        <width>830</width>
+        <height>561</height>
        </rect>
       </property>
       <attribute name="label">
@@ -280,43 +280,9 @@
            </widget>
           </item>
           <item row="5" column="1">
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
-            <item>
-             <widget class="QRadioButton" name="publicRadioButton">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="text">
-               <string>Public</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QRadioButton" name="privateRadioButton">
-              <property name="text">
-               <string>Private</string>
-              </property>
-              <property name="checked">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item row="6" column="1">
            <widget class="QPushButton" name="createGameButton">
             <property name="text">
              <string>Create game</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="0">
-           <widget class="QLabel" name="label_3">
-            <property name="text">
-             <string>Visibility:</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
             </property>
            </widget>
           </item>

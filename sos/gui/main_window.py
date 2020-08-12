@@ -36,6 +36,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def navigate_to_menu_screen(self, session_id):
         self.user_session_id = session_id
         self.set_server_address_readonly(True)
+        self.menuScreen.refresh_form()
         self.stackedWidget.setCurrentWidget(self.menuScreen)
 
     def set_server_address_readonly(self, readonly):

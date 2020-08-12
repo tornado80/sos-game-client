@@ -123,7 +123,7 @@ class Ui_MenuScreen(object):
         self.toolBox.addItem(self.page, u"Join Game")
         self.page_2 = QWidget()
         self.page_2.setObjectName(u"page_2")
-        self.page_2.setGeometry(QRect(0, 0, 844, 547))
+        self.page_2.setGeometry(QRect(0, 0, 830, 561))
         self.gridLayout = QGridLayout(self.page_2)
         self.gridLayout.setObjectName(u"gridLayout")
         self.frame = QFrame(self.page_2)
@@ -163,33 +163,10 @@ class Ui_MenuScreen(object):
 
         self.gridLayout_2.addWidget(self.label_4, 0, 0, 1, 2)
 
-        self.horizontalLayout_2 = QHBoxLayout()
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.publicRadioButton = QRadioButton(self.frame)
-        self.publicRadioButton.setObjectName(u"publicRadioButton")
-        self.publicRadioButton.setEnabled(False)
-
-        self.horizontalLayout_2.addWidget(self.publicRadioButton)
-
-        self.privateRadioButton = QRadioButton(self.frame)
-        self.privateRadioButton.setObjectName(u"privateRadioButton")
-        self.privateRadioButton.setChecked(True)
-
-        self.horizontalLayout_2.addWidget(self.privateRadioButton)
-
-
-        self.gridLayout_2.addLayout(self.horizontalLayout_2, 5, 1, 1, 1)
-
         self.createGameButton = QPushButton(self.frame)
         self.createGameButton.setObjectName(u"createGameButton")
 
-        self.gridLayout_2.addWidget(self.createGameButton, 6, 1, 1, 1)
-
-        self.label_3 = QLabel(self.frame)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_2.addWidget(self.label_3, 5, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.createGameButton, 5, 1, 1, 1)
 
         self.line = QFrame(self.frame)
         self.line.setObjectName(u"line")
@@ -261,10 +238,7 @@ class Ui_MenuScreen(object):
         self.toolBox.setItemText(self.toolBox.indexOf(self.page), QCoreApplication.translate("MenuScreen", u"Join Game", None))
         self.label.setText(QCoreApplication.translate("MenuScreen", u"Player count:", None))
         self.label_4.setText(QCoreApplication.translate("MenuScreen", u"<html><head/><body><p align=\"center\"><span style=\" font-weight:600; color:#ef2929;\">NOTE</span></p><p><span style=\" font-weight:600;\">1.</span> You can setup multiplayer game by increasing players upto 20.</p><p><span style=\" font-weight:600;\">2. </span>You can also increase board size upto 100. Board will be a square with given dimention.</p><p><span style=\" font-weight:600;\">3. </span>Note that limits mentioned above are due to graphical limits not game server.</p><p><span style=\" font-weight:600;\">4.</span> You can also let your game to be public or private. Namely you can give game id and your username to your friends to start game (private) or let it to be open by anyone connecting to server (public).</p><p><span style=\" font-weight:600;\">5.</span> Finally press <span style=\" font-style:italic;\">Create game</span> to broadcast the game and wait for players to join. As soon as number of players reach the given amount, game will be started automatically.</p></body></html>", None))
-        self.publicRadioButton.setText(QCoreApplication.translate("MenuScreen", u"Public", None))
-        self.privateRadioButton.setText(QCoreApplication.translate("MenuScreen", u"Private", None))
         self.createGameButton.setText(QCoreApplication.translate("MenuScreen", u"Create game", None))
-        self.label_3.setText(QCoreApplication.translate("MenuScreen", u"Visibility:", None))
         self.label_2.setText(QCoreApplication.translate("MenuScreen", u"Board size:", None))
         self.label_7.setText(QCoreApplication.translate("MenuScreen", u"Max hint:", None))
         self.toolBox.setItemText(self.toolBox.indexOf(self.page_2), QCoreApplication.translate("MenuScreen", u"New Game", None))

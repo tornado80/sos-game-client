@@ -44,19 +44,28 @@ class GameScreen(QWidget, Ui_GameScreen):
         super().__init__()
         self.setupUi(self)
         self.backButton.clicked.connect(self.handle_back)
+        self.getHintButton.clicked.connect(self.handle_hint)
         self.leaderBoardRows = []
         self.board = []
         self.my_turn = False
+        self.has_winner = False
+        self.hints_finished = False
+
+    def handle_hint(self):
+        request = Packet()
+        request["command"] = "game_runner_hint"
+        request.send(self.sock)
 
     def handle_back(self):
-        if QMessageBox.question(self, 
-            "User Consent", 
-            "Do you really want to quit the game? If all the players hit back, game is automatically deleted and you may lose points.", 
-            QMessageBox.No, QMessageBox.Yes) == QMessageBox.No:
-            return        
-        request = Packet()
-        request["command"] = "game_runner_disconnect"
-        request.send(self.sock)
+        if not self.has_winner:
+            if QMessageBox.question(self, 
+                "User Consent", 
+                "Do you really want to quit the game? If all the players hit back, game is automatically deleted and you may lose points.", 
+                QMessageBox.No, QMessageBox.Yes) == QMessageBox.No:
+                return        
+            request = Packet()
+            request["command"] = "game_runner_disconnect"
+            request.send(self.sock)
         self.main_window.navigate_to_menu_screen(self.main_window.user_session_id)
 
     def setup_game_listener(self):
@@ -69,18 +78,26 @@ class GameScreen(QWidget, Ui_GameScreen):
             self.clear_leader_board()
             if self.noPlayerJoinedLabel.isVisible():
                 self.noPlayerJoinedLabel.setVisible(False)
-            players = response["data"]["players"]
+            players = response["data"]["scores"]
             for player_username, player_score in players.items():
                 row = self.leaderBoard.rowCount()
                 color = response["data"]["colors"][player_username]
+                hint = response["data"]["hints"][player_username]
+                status = response["data"]["status"][player_username]
                 usernameLabel = QLabel(player_username)
                 scoreLabel = QLabel(player_score)
+                hintLabel = QLabel(hint)
+                statusLabel = QLabel(status)
                 usernameLabel.setStyleSheet(f"color:{color};")
                 usernameLabel.setAlignment(Qt.AlignCenter)
+                hintLabel.setAlignment(Qt.AlignCenter)
+                statusLabel.setAlignment(Qt.AlignCenter)
                 scoreLabel.setAlignment(Qt.AlignCenter)
                 self.leaderBoard.addWidget(usernameLabel, row, 0)
                 self.leaderBoard.addWidget(scoreLabel, row, 1)
-                self.leaderBoardRows.append([usernameLabel, scoreLabel])
+                self.leaderBoard.addWidget(hintLabel, row, 2)
+                self.leaderBoard.addWidget(statusLabel, row, 3)
+                self.leaderBoardRows.append([usernameLabel, scoreLabel, hintLabel, statusLabel])
         elif response["command"] == "game_runner_board_status":
             for i in range(self.board_size):
                 for j in range(self.board_size):
@@ -89,11 +106,20 @@ class GameScreen(QWidget, Ui_GameScreen):
         elif response["command"] == "game_runner_your_turn":
             self.my_turn = True
             self.yourTurnLabel.setVisible(True)
+            if not self.hints_finished:
+                self.getHintButton.setEnabled(True)
+        elif response["command"] == "game_runner_hint_result":
+            if "error" in response:
+                QMessageBox.critical(self, "Hint error", response["error"])
+            else:
+                if "finished" in response:
+                    self.hints_finished = True
+                QMessageBox.information(self, "Hint result", response["result"])
         elif response["command"] == "game_runner_winner_announced":
             request = Packet()
             request["command"] = "game_runner_disconnect"
             request.send(self.sock)
-            self.main_window.navigate_to_menu_screen(self.main_window.user_session_id)
+            self.has_winner = True
             if "draw" in response:
                 QMessageBox.information(None, "Game darw", "Game has led to draw.")
             elif "winner" in response:
@@ -112,6 +138,7 @@ class GameScreen(QWidget, Ui_GameScreen):
             self.board[row][column].set_style("S", self.color)
             self.board[row][column].state = 1
             self.my_turn = False
+            self.getHintButton.setEnabled(False)
             self.yourTurnLabel.setVisible(False)
 
     def handle_o_wanted(self, row, column):
@@ -128,6 +155,7 @@ class GameScreen(QWidget, Ui_GameScreen):
             self.board[row][column].state = 1
             self.my_turn = False
             self.yourTurnLabel.setVisible(False)
+            self.getHintButton.setEnabled(False)
 
     def setup_game_board(self):
         for i in range(len(self.board)):
@@ -151,11 +179,18 @@ class GameScreen(QWidget, Ui_GameScreen):
             row[0].setParent(None)
             self.leaderBoard.removeWidget(row[1])
             row[1].setParent(None)
+            self.leaderBoard.removeWidget(row[2])
+            row[2].setParent(None)
+            self.leaderBoard.removeWidget(row[3])
+            row[3].setParent(None)                        
         self.leaderBoardRows.clear()
 
     def setup_leader_board(self):
         self.noPlayerJoinedLabel.setVisible(True)
         self.yourTurnLabel.setVisible(False)
+        self.getHintButton.setEnabled(False)
+        self.has_winner = False
+        self.hints_finished = False
         self.clear_leader_board()
         self.gameIDLabel.setText(str(self.game_id))
         self.creatorUsernameLabel.setText(self.creator_username)

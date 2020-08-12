@@ -13,6 +13,13 @@ class MenuScreen(QWidget, Ui_MenuScreen):
         self.createGameButton.clicked.connect(self.handle_new_game)
         self.joinGameButton.clicked.connect(self.handle_join_game)
 
+    def refresh_form(self):
+        self.boardSizeSpinBox.setValue(10)
+        self.creatorUsernameLineEdit.setText("")
+        self.gameIDSpinBox.setValue(0)
+        self.playerCountSpinBox.setValue(2)
+        self.maxHintSpinBox.setValue(3)
+
     def handle_join_game(self):
         try:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
@@ -55,7 +62,7 @@ class MenuScreen(QWidget, Ui_MenuScreen):
                 "session_id" : self.main_window.user_session_id,
                 "board_size" : self.boardSizeSpinBox.value(),
                 "player_count" : self.playerCountSpinBox.value(),
-                "is_public" : self.publicRadioButton.isChecked(),
+                "is_public" : False,
                 "max_hint" : self.maxHintSpinBox.value()
             }
             request.send(sock)
