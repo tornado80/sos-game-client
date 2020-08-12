@@ -45,6 +45,7 @@ class GameScreen(QWidget, Ui_GameScreen):
         self.setupUi(self)
         self.backButton.clicked.connect(self.handle_back)
         self.leaderBoardRows = []
+        self.board = []
         self.my_turn = False
 
     def handle_back(self):
@@ -88,13 +89,18 @@ class GameScreen(QWidget, Ui_GameScreen):
         elif response["command"] == "game_runner_your_turn":
             self.my_turn = True
             self.yourTurnLabel.setVisible(True)
+        elif response["command"] == "game_runner_winner_announced":
+            request = Packet()
+            request["command"] = "game_runner_disconnect"
+            request.send(self.sock)
+            self.main_window.navigate_to_menu_screen(self.main_window.user_session_id)
+            if "draw" in response:
+                QMessageBox.information(None, "Game darw", "Game has led to draw.")
+            elif "winner" in response:
+                QMessageBox.information(None, "Winner announced", "{} has won the game.".format(response["winner"]))
 
     def handle_s_wanted(self, row, column):
         if self.my_turn:
-            self.board[row][column].set_style("S", self.color)
-            self.board[row][column].state = 1
-            self.my_turn = False
-            self.yourTurnLabel.setVisible(False)
             request = Packet()
             request["command"] = "game_runner_my_turn"
             request["data"] = {
@@ -102,14 +108,14 @@ class GameScreen(QWidget, Ui_GameScreen):
                 "column" : column,
                 "letter" : "S"
             }
-            request.send(self.sock)
-
-    def handle_o_wanted(self, row, column):
-        if self.my_turn:
-            self.board[row][column].set_style("O", self.color)
+            request.send(self.sock)            
+            self.board[row][column].set_style("S", self.color)
             self.board[row][column].state = 1
             self.my_turn = False
             self.yourTurnLabel.setVisible(False)
+
+    def handle_o_wanted(self, row, column):
+        if self.my_turn:
             request = Packet()
             request["command"] = "game_runner_my_turn"
             request["data"] = {
@@ -117,10 +123,19 @@ class GameScreen(QWidget, Ui_GameScreen):
                 "column" : column,
                 "letter" : "O"
             }
-            request.send(self.sock)            
+            request.send(self.sock)             
+            self.board[row][column].set_style("O", self.color)
+            self.board[row][column].state = 1
+            self.my_turn = False
+            self.yourTurnLabel.setVisible(False)
 
     def setup_game_board(self):
-        self.board = []
+        for i in range(len(self.board)):
+            for j in range(len(self.board)):
+                self.gameBoard.removeWidget(self.board[i][j])
+                self.board[i][j].setParent(None)
+        self.board.clear()
+        self.my_turn = False
         for i in range(self.board_size):
             self.board.append([])
             for j in range(self.board_size):
@@ -146,13 +161,15 @@ class GameScreen(QWidget, Ui_GameScreen):
         self.creatorUsernameLabel.setText(self.creator_username)
         self.boardSizeLabel.setText(str(self.board_size))
         self.playersCountLabel.setText(str(self.player_count))
+        self.maxHintLabel.setText(str(self.max_hint))
 
-    def setup_game_screen(self, sock, game_id, creator_username, board_size, player_count, color):
+    def setup_game_screen(self, sock, game_id, creator_username, board_size, player_count, color, max_hint):
         self.game_id = game_id
         self.sock = sock
         self.color = color
         self.creator_username = creator_username
         self.board_size = board_size
+        self.max_hint = max_hint
         self.player_count = player_count
         self.setup_leader_board()
         self.setup_game_board()

@@ -39,7 +39,8 @@ class MenuScreen(QWidget, Ui_MenuScreen):
                     response["data"]["creator_username"], 
                     response["data"]["board_size"], 
                     response["data"]["player_count"],
-                    response["data"]["color"]
+                    response["data"]["color"],
+                    response["data"]["max_hint"]
                 )
         except Exception as error:
             QMessageBox.critical(self, "Error", str(error))
@@ -54,7 +55,8 @@ class MenuScreen(QWidget, Ui_MenuScreen):
                 "session_id" : self.main_window.user_session_id,
                 "board_size" : self.boardSizeSpinBox.value(),
                 "player_count" : self.playerCountSpinBox.value(),
-                "is_public" : self.publicRadioButton.isChecked()
+                "is_public" : self.publicRadioButton.isChecked(),
+                "max_hint" : self.maxHintSpinBox.value()
             }
             request.send(sock)
             response = Packet.recv(sock)
@@ -71,7 +73,8 @@ class MenuScreen(QWidget, Ui_MenuScreen):
                     response["data"]["creator_username"], 
                     response["data"]["board_size"], 
                     response["data"]["player_count"],
-                    response["data"]["color"]
+                    response["data"]["color"],
+                    response["data"]["max_hint"]
                 )
         except Exception as error:
             QMessageBox.critical(self, "Error", str(error))

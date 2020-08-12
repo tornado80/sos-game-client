@@ -27,7 +27,7 @@ class Ui_GameScreen(object):
         self.label_4.setObjectName(u"label_4")
         self.label_4.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_3.addWidget(self.label_4, 3, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.label_4, 4, 1, 1, 1)
 
         self.scrollArea_2 = QScrollArea(GameScreen)
         self.scrollArea_2.setObjectName(u"scrollArea_2")
@@ -36,7 +36,7 @@ class Ui_GameScreen(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 180, 554))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 180, 531))
         self.verticalLayout = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.label_7 = QLabel(self.scrollAreaWidgetContents)
@@ -75,7 +75,7 @@ class Ui_GameScreen(object):
 
         self.scrollArea_2.setWidget(self.scrollAreaWidgetContents)
 
-        self.gridLayout_3.addWidget(self.scrollArea_2, 4, 1, 1, 2)
+        self.gridLayout_3.addWidget(self.scrollArea_2, 5, 1, 1, 2)
 
         self.scrollArea = QScrollArea(GameScreen)
         self.scrollArea.setObjectName(u"scrollArea")
@@ -89,7 +89,7 @@ class Ui_GameScreen(object):
         self.gameBoard.setObjectName(u"gameBoard")
         self.scrollArea.setWidget(self.widget)
 
-        self.gridLayout_3.addWidget(self.scrollArea, 0, 0, 7, 1)
+        self.gridLayout_3.addWidget(self.scrollArea, 0, 0, 8, 1)
 
         self.boardSizeLabel = QLabel(GameScreen)
         self.boardSizeLabel.setObjectName(u"boardSizeLabel")
@@ -106,7 +106,7 @@ class Ui_GameScreen(object):
         self.backButton = QPushButton(GameScreen)
         self.backButton.setObjectName(u"backButton")
 
-        self.gridLayout_3.addWidget(self.backButton, 6, 2, 1, 1)
+        self.gridLayout_3.addWidget(self.backButton, 7, 2, 1, 1)
 
         self.label = QLabel(GameScreen)
         self.label.setObjectName(u"label")
@@ -118,7 +118,7 @@ class Ui_GameScreen(object):
         self.creatorUsernameLabel.setObjectName(u"creatorUsernameLabel")
         self.creatorUsernameLabel.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_3.addWidget(self.creatorUsernameLabel, 3, 2, 1, 1)
+        self.gridLayout_3.addWidget(self.creatorUsernameLabel, 4, 2, 1, 1)
 
         self.playersCountLabel = QLabel(GameScreen)
         self.playersCountLabel.setObjectName(u"playersCountLabel")
@@ -138,10 +138,22 @@ class Ui_GameScreen(object):
 
         self.gridLayout_3.addWidget(self.gameIDLabel, 0, 2, 1, 1)
 
-        self.pushButton = QPushButton(GameScreen)
-        self.pushButton.setObjectName(u"pushButton")
+        self.getHintButton = QPushButton(GameScreen)
+        self.getHintButton.setObjectName(u"getHintButton")
 
-        self.gridLayout_3.addWidget(self.pushButton, 6, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.getHintButton, 7, 1, 1, 1)
+
+        self.label_5 = QLabel(GameScreen)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_3.addWidget(self.label_5, 3, 1, 1, 1)
+
+        self.maxHintLabel = QLabel(GameScreen)
+        self.maxHintLabel.setObjectName(u"maxHintLabel")
+        self.maxHintLabel.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_3.addWidget(self.maxHintLabel, 3, 2, 1, 1)
 
 
         self.retranslateUi(GameScreen)
@@ -163,6 +175,8 @@ class Ui_GameScreen(object):
         self.playersCountLabel.setText(QCoreApplication.translate("GameScreen", u"0", None))
         self.label_2.setText(QCoreApplication.translate("GameScreen", u"Board size:", None))
         self.gameIDLabel.setText(QCoreApplication.translate("GameScreen", u"0", None))
-        self.pushButton.setText(QCoreApplication.translate("GameScreen", u"Get hint (3)", None))
+        self.getHintButton.setText(QCoreApplication.translate("GameScreen", u"Get hint", None))
+        self.label_5.setText(QCoreApplication.translate("GameScreen", u"Max hint:", None))
+        self.maxHintLabel.setText(QCoreApplication.translate("GameScreen", u"0", None))
     # retranslateUi
 

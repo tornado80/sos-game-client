@@ -123,7 +123,7 @@ class Ui_MenuScreen(object):
         self.toolBox.addItem(self.page, u"Join Game")
         self.page_2 = QWidget()
         self.page_2.setObjectName(u"page_2")
-        self.page_2.setGeometry(QRect(0, 0, 294, 665))
+        self.page_2.setGeometry(QRect(0, 0, 844, 547))
         self.gridLayout = QGridLayout(self.page_2)
         self.gridLayout.setObjectName(u"gridLayout")
         self.frame = QFrame(self.page_2)
@@ -178,18 +178,18 @@ class Ui_MenuScreen(object):
         self.horizontalLayout_2.addWidget(self.privateRadioButton)
 
 
-        self.gridLayout_2.addLayout(self.horizontalLayout_2, 4, 1, 1, 1)
+        self.gridLayout_2.addLayout(self.horizontalLayout_2, 5, 1, 1, 1)
 
         self.createGameButton = QPushButton(self.frame)
         self.createGameButton.setObjectName(u"createGameButton")
 
-        self.gridLayout_2.addWidget(self.createGameButton, 5, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.createGameButton, 6, 1, 1, 1)
 
         self.label_3 = QLabel(self.frame)
         self.label_3.setObjectName(u"label_3")
         self.label_3.setAlignment(Qt.AlignCenter)
 
-        self.gridLayout_2.addWidget(self.label_3, 4, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.label_3, 5, 0, 1, 1)
 
         self.line = QFrame(self.frame)
         self.line.setObjectName(u"line")
@@ -204,6 +204,21 @@ class Ui_MenuScreen(object):
         self.label_2.setAlignment(Qt.AlignCenter)
 
         self.gridLayout_2.addWidget(self.label_2, 3, 0, 1, 1)
+
+        self.label_7 = QLabel(self.frame)
+        self.label_7.setObjectName(u"label_7")
+        self.label_7.setAlignment(Qt.AlignCenter)
+
+        self.gridLayout_2.addWidget(self.label_7, 4, 0, 1, 1)
+
+        self.maxHintSpinBox = QSpinBox(self.frame)
+        self.maxHintSpinBox.setObjectName(u"maxHintSpinBox")
+        self.maxHintSpinBox.setAlignment(Qt.AlignCenter)
+        self.maxHintSpinBox.setButtonSymbols(QAbstractSpinBox.NoButtons)
+        self.maxHintSpinBox.setMaximum(10)
+        self.maxHintSpinBox.setValue(3)
+
+        self.gridLayout_2.addWidget(self.maxHintSpinBox, 4, 1, 1, 1)
 
 
         self.gridLayout.addWidget(self.frame, 1, 1, 1, 1)
@@ -251,6 +266,7 @@ class Ui_MenuScreen(object):
         self.createGameButton.setText(QCoreApplication.translate("MenuScreen", u"Create game", None))
         self.label_3.setText(QCoreApplication.translate("MenuScreen", u"Visibility:", None))
         self.label_2.setText(QCoreApplication.translate("MenuScreen", u"Board size:", None))
+        self.label_7.setText(QCoreApplication.translate("MenuScreen", u"Max hint:", None))
         self.toolBox.setItemText(self.toolBox.indexOf(self.page_2), QCoreApplication.translate("MenuScreen", u"New Game", None))
     # retranslateUi
 
